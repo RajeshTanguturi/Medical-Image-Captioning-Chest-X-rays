@@ -25,7 +25,7 @@ function App() {
         <Route path="/guest" element={ <Guest /> } />
         <Route path="/mri" element={ <ScanMri /> } />
         <Route path="/feedback" element={ <Feedback /> } />   
-        <Route path="/result" element={ <Report /> } /> 
+        <Route path="/report" element={ <Report /> } /> 
         <Route path= "*" element={ <Notfound /> } />   
       </Routes>
       <Footer />

@@ -1,11 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/fileupload.scss"
 
+
 const FileUpload = () => {
+  const navigate = useNavigate(); 
+
   const [image, setImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null); 
   const [patientDetails, setpatientDetails] = useState({
@@ -13,6 +18,7 @@ const FileUpload = () => {
     patientAge: "",
     patientSex: "",
   });
+  // const [imageurl, setimageurl] = useState("");
   const { patientName, patientAge, patientSex } = patientDetails;
   const [loading, setLoading] = useState(false);
 
@@ -27,32 +33,35 @@ const FileUpload = () => {
     formData.append("patientSex", patientSex);
 
     console.log(formData);
+    navigate("/report", { state: { patientDetails, image } })
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:4000/image/uploadimage",
+    //     formData,
+    //     {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     }
+    //   );
+    //   setimageurl(response.url);
+    //   toast.success("Data uploaded successfully");
+    //   console.log("Response from server:", response.data);
 
-    try {
-      const response = await axios.post(
-        "http://localhost:4000/image/uploadimage",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      toast.success("Data uploaded successfully");
-      console.log("Response from server:", response.data);
+    //   navigate("/report", { state: { patientDetails, image } })
 
-      setpatientDetails({
-        patientName: "",
-        patientAge: "",
-        patientSex: "",
-      });
-      setImage(null);
-    } catch (error) {
-      toast.error("Error uploading data");
-      console.error("Error uploading image:", error);
-    } finally {
-      setLoading(false);
-    }
+    //   setpatientDetails({
+    //     patientName: "",
+    //     patientAge: "",
+    //     patientSex: "",
+    //   });
+    //   setImage(null);
+    // } catch (error) {
+    //   toast.error("Error uploading data");
+    //   console.error("Error uploading image:", error);
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   const uploadImage = (e) => {
@@ -91,12 +100,12 @@ const FileUpload = () => {
           <form onSubmit={submitImage}>
             <div className="form-floating">
               <input
-                maxLength="12"
+                maxLength="50"
                 type="text"
                 class="form-control"
                 id="floatingInputpname"
                 name="patientName"
-                value={patientName}
+                value={patientName.toUpperCase()}
                 placeholder="name"
                 onChange={updatePatientDetails}
                 required
