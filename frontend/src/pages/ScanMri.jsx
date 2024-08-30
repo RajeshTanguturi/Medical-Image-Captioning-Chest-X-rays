@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Report from "./Report";
 
 import { useNavigate } from "react-router-dom";
-import Interpretation from "../components/Interpret";
+// import Interpretation from "../components/Interpret";
 
 const ScanMri = () => {
   const navigate = useNavigate();

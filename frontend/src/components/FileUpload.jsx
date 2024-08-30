@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/fileupload.scss";
-
-// import "../styles/toggle.scss";
+import "../styles/fileupload.scss"
 
 const FileUpload = () => {
   const [image, setImage] = useState(null);
@@ -86,6 +84,9 @@ const FileUpload = () => {
   return (
     <div>
       <div className="fileupload">
+  
+          <h4 id="heading">Patient Details</h4>
+      
         <div className="card">
           <form onSubmit={submitImage}>
             <div className="form-floating">
@@ -151,7 +152,7 @@ const FileUpload = () => {
 
             {previewUrl && (
               <div className="image-preview">
-                <img src={previewUrl} alt="Selected" style={{ maxWidth: '100%', height: 'auto', marginTop: '10px' }} />
+                <img src={previewUrl} alt="Selected" style={{ maxWidth: 'auto', height: 'auto', marginTop: '10px' }} />
               </div>
             )}
       

@@ -18,11 +18,11 @@ const Header = ({ logout }) => {
   return (
     <nav className="mynavbar">
       <div className="logo">
-        <Link to="/">Scan Savvy</Link>
+        <Link to="/">InsightXray</Link>
       </div>
       <ul className="links">
         <li>
-          <Link to={"/mri"}>scan MRI</Link>
+          <Link to={"/mri"}>Scan Chest X-ray</Link>
         </li>
         {/* <li>
           <Link to={"/xray"}>scan X-Ray</Link>
@@ -50,11 +50,6 @@ const Header = ({ logout }) => {
         <img src={hamburger} height="40px" alt="menu" />
       </div>
       <div className={`dropdown_menu ${toggle}`}>
-        <li>
-          <Link onClick={handleLinkclick} to={"/toll"}>
-            scan MRI
-          </Link>
-        </li>
         <li>
           <Link onClick={handleLinkclick} to={"/user"}>
             scan X-Ray

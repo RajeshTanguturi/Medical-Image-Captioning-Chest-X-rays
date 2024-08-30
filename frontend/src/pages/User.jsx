@@ -4,20 +4,17 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import Header from "../components/Header";
 import { ToastContainer, toast } from "react-toastify";
-import "../styles/user.scss";
 import FileUpload from "../components/FileUpload";
-import "../styles/dropdown.scss";
-import Addinfo from "../components/Addinfo";
+// import Addinfo from "../components/Addinfo";
+import RecentsTab from "../components/RecentsTab";
+
+import "../styles/usertest.scss";
 
 const User = () => {
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
 
-  const handleChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
   useEffect(() => {
     const verifyCookie = async () => {
       if (!cookies.token) {
@@ -48,17 +45,17 @@ const User = () => {
       <Header logout={handleLogout} />
       <div className="home_page">
         <h4>
-          {" "}
           Welcome back <span>{username.toUpperCase()}</span>
         </h4>
-        
-
-        <FileUpload />
-        {/* <Addinfo /> */}
-
-        {/* <button onClick={Logout}>LOGOUT</button> */}
+        <div className="layout">
+          <div className="recent-tab">
+            <RecentsTab />
+          </div>
+          <div className="file-upload">
+            <FileUpload />
+          </div>
+        </div>
       </div>
-      {/* <ToastContainer /> */}
     </>
   );
 };

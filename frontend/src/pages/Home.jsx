@@ -7,11 +7,11 @@ const Home = () => {
     <div className="hero">
       <div className="home" id="Home">
         <main>
-          <h1>Scan Savvy</h1>
+          <h1>InsightXray</h1>
           <p>Medical Image Interpretation Redefined with Machine Learning</p>
           <br />
           <Link id="guestredirect" to={"/mri"}>
-            Scan X-ray
+            Scan Chest X-ray
           </Link>
 
         </main>
@@ -20,7 +20,7 @@ const Home = () => {
         {/* <img src={vg} alt="Graphics" /> */}
         <div>
           {/* <h1></h1> */}
-          <p>At ScanSavvy, we're dedicated to revolutionizing radiology with AI-powered medical image interpretation. Our mission is to assist radiologists in diagnosing conditions more quickly and accurately, ultimately improving patient outcomes.
+          <p>At InsightXray, we're dedicated to revolutionizing radiology with AI-powered medical image interpretation. Our mission is to assist radiologists in diagnosing conditions more quickly and accurately, ultimately improving patient outcomes.
 </p>
         </div>
       </div>

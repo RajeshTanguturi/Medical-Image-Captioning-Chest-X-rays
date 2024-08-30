@@ -12,6 +12,7 @@ import ScanMri from "./pages/ScanMri";
 import Report from "./pages/Report"
 import Feedback from "./pages/Feedback";
 import Notfound from "./components/Notfound";
+
 function App() {
   return (
     <div className="App">
