@@ -21,8 +21,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 router.post("/uploadimage", upload.single("image"), async (req, res) => {
   try {
-    console.log("1")
-    console.log("post request recived");
+    console.log("image post request recived");
     console.log(req.body);
     const imagePath = path.join("./public/uploads", req.file.filename);
 
@@ -31,7 +30,7 @@ router.post("/uploadimage", upload.single("image"), async (req, res) => {
     formData.append("file", imageFile);
 
     // Send image data to Flask API
-    const flaskResponse = await axios.post("http://127.0.0.1:5000/predictmri", formData, {
+    const flaskResponse = await axios.post("http://localhost:5000/predictllm", formData, {
       headers: {
         ...formData.getHeaders(),
       },

@@ -22,6 +22,11 @@ const FileUpload = () => {
   const { patientName, patientAge, patientSex } = patientDetails;
   const [loading, setLoading] = useState(false);
 
+
+  const setgeneratedText = (caption) => {
+    navigate("/report", { state: { patientDetails, image, generatedText: caption } });
+  };
+  
   const submitImage = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -33,35 +38,39 @@ const FileUpload = () => {
     formData.append("patientSex", patientSex);
 
     console.log(formData);
-    navigate("/report", { state: { patientDetails, image } })
-    // try {
-    //   const response = await axios.post(
-    //     "http://localhost:4000/image/uploadimage",
-    //     formData,
-    //     {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     }
-    //   );
-    //   setimageurl(response.url);
-    //   toast.success("Data uploaded successfully");
-    //   console.log("Response from server:", response.data);
+    // navigate("/report", { state: { patientDetails, image } })
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/image/uploadimage",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      toast.success("Data uploaded successfully");
+      const caption = response.data.flaskResponse.caption;
+      console.log("Response from server:", caption);
 
-    //   navigate("/report", { state: { patientDetails, image } })
+      setgeneratedText(caption);
 
-    //   setpatientDetails({
-    //     patientName: "",
-    //     patientAge: "",
-    //     patientSex: "",
-    //   });
-    //   setImage(null);
-    // } catch (error) {
-    //   toast.error("Error uploading data");
-    //   console.error("Error uploading image:", error);
-    // } finally {
-    //   setLoading(false);
-    // }
+
+     
+
+      
+    } catch (error) {
+      toast.error("Error uploading data");
+      console.error("Error uploading image:", error);
+    } finally {
+      setLoading(false);
+      setpatientDetails({
+        patientName: "",
+        patientAge: "",
+        patientSex: "",
+      });
+      setImage(null);
+    }
   };
 
   const uploadImage = (e) => {
