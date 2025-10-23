@@ -31,6 +31,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("sudmit pressed")
       const { data } = await axios.post(
         "http://localhost:4000/auth/login",
         {
